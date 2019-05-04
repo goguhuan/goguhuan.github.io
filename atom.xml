@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>goguhuan技术博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://goguhuan.github.io/"/>
+  <updated>2019-05-04T04:19:37.697Z</updated>
+  <id>http://goguhuan.github.io/</id>
+  
+  <author>
+    <name>goguhuan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ReadMe</title>
+    <link href="http://goguhuan.github.io//fcdefbb0/"/>
+    <id>http://goguhuan.github.io//fcdefbb0/</id>
+    <published>2019-05-04T06:00:00.000Z</published>
+    <updated>2019-05-04T04:19:37.697Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ReadMe&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="http://goguhuan.github.io/categories/cat-else/"/>
+    
+    
+      <category term="goghuhuan" scheme="http://goguhuan.github.io/tags/goghuhuan/"/>
+    
+  </entry>
+  
+</feed>
