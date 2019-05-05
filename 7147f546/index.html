@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="goguhuan,">
+  <meta name="keywords" content="iOS, 增量代码覆盖率, 代码覆盖率">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="iOS增量代码覆盖率可以用来评估开发的自测质量，以及多轮测试后的测试质量。这里会解析iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点。 GCDAProfilingclang编译参数 GCC_GENERATE_TEST_COVERAGE_FILES 以及 GCC_INSTRUMENT_PROGRAM_FLOW_ARCS 产生的相关函数是可以由上层进行替换的，这里可以在项目当中接入 GCD">
-<meta name="keywords" content="goguhuan">
+<meta name="description" content="iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点">
+<meta name="keywords" content="iOS, 增量代码覆盖率, 代码覆盖率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS增量代码覆盖率实现 (上)">
 <meta property="og:url" content="https://goguhuan.github.io/7147f546/index.html">
 <meta property="og:site_name" content="goguhuan技术博客">
-<meta property="og:description" content="iOS增量代码覆盖率可以用来评估开发的自测质量，以及多轮测试后的测试质量。这里会解析iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点。 GCDAProfilingclang编译参数 GCC_GENERATE_TEST_COVERAGE_FILES 以及 GCC_INSTRUMENT_PROGRAM_FLOW_ARCS 产生的相关函数是可以由上层进行替换的，这里可以在项目当中接入 GCD">
+<meta property="og:description" content="iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T02:26:46.744Z">
+<meta property="og:updated_time" content="2019-05-05T06:16:30.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS增量代码覆盖率实现 (上)">
-<meta name="twitter:description" content="iOS增量代码覆盖率可以用来评估开发的自测质量，以及多轮测试后的测试质量。这里会解析iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点。 GCDAProfilingclang编译参数 GCC_GENERATE_TEST_COVERAGE_FILES 以及 GCC_INSTRUMENT_PROGRAM_FLOW_ARCS 产生的相关函数是可以由上层进行替换的，这里可以在项目当中接入 GCD">
+<meta name="twitter:description" content="iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点">
 
 
 
@@ -163,7 +163,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <h1 class="site-subtitle" itemprop="description">goguhuan</h1>
       
   </div>
 
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS增量代码覆盖率实现 (上)</h1>
+          <h2 class="post-title" itemprop="name headline">iOS增量代码覆盖率实现 (上)</h2>
         
 
         <div class="post-meta">
@@ -343,6 +343,10 @@
           
 
           
+              <div class="post-description">
+                  iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点
+              </div>
+          
 
         </div>
       </header>
@@ -359,7 +363,7 @@
       
         <p>iOS增量代码覆盖率可以用来评估开发的自测质量，以及多轮测试后的测试质量。这里会解析iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点。</p>
 <h3 id="GCDAProfiling"><a href="#GCDAProfiling" class="headerlink" title="GCDAProfiling"></a>GCDAProfiling</h3><p>clang编译参数 <em>GCC_GENERATE_TEST_COVERAGE_FILES</em> 以及 <em>GCC_INSTRUMENT_PROGRAM_FLOW_ARCS</em> 产生的相关函数是可以由上层进行替换的，这里可以在项目当中接入 GCDAProfiling 源码进行相关修正。</p>
-<p><a href="https://github.com/llvm-mirror/compiler-rt/tree/master/lib/profile" target="_blank" rel="noopener">https://github.com/llvm-mirror/compiler-rt/tree/master/lib/profile</a></p>
+<p><a href="https://github.com/llvm-mirror/compiler-rt/tree/master/lib/profile" rel="external nofollow" target="_blank">https://github.com/llvm-mirror/compiler-rt/tree/master/lib/profile</a></p>
 <ul>
 <li>修正 cannot merge previous GCDA file 等错误</li>
 </ul>
@@ -532,6 +536,16 @@
             </div>
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/goguhuan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
