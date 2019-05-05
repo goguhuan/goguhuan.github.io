@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://goguhuan.github.io/"/>
-  <updated>2019-05-05T09:19:14.715Z</updated>
+  <updated>2019-05-05T10:42:21.356Z</updated>
   <id>https://goguhuan.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://goguhuan.github.io//7147f546/"/>
     <id>https://goguhuan.github.io//7147f546/</id>
     <published>2019-05-04T23:12:42.000Z</published>
-    <updated>2019-05-05T09:19:14.715Z</updated>
+    <updated>2019-05-05T10:42:21.356Z</updated>
     
     <summary type="html">
     
@@ -30,6 +30,33 @@
     </summary>
     
       <category term="代码覆盖率" scheme="https://goguhuan.github.io/categories/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/"/>
+    
+    
+      <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站简介</title>
+    <link href="https://goguhuan.github.io//d431311d/"/>
+    <id>https://goguhuan.github.io//d431311d/</id>
+    <published>2019-05-04T22:30:09.000Z</published>
+    <updated>2019-05-05T10:42:21.357Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这个博客主要聚焦于iOS，移动开发，计算机领域。&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="https://goguhuan.github.io/categories/cat-else/"/>
     
     
       <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
