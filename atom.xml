@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://goguhuan.github.io/"/>
-  <updated>2019-05-04T15:37:51.754Z</updated>
+  <updated>2019-05-05T00:17:32.164Z</updated>
   <id>https://goguhuan.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ReadMe</title>
-    <link href="https://goguhuan.github.io//fcdefbb0/"/>
-    <id>https://goguhuan.github.io//fcdefbb0/</id>
-    <published>2019-05-04T06:00:00.000Z</published>
-    <updated>2019-05-04T15:37:51.754Z</updated>
+    <title>iOS增量代码覆盖率实现 (上)</title>
+    <link href="https://goguhuan.github.io//7147f546/"/>
+    <id>https://goguhuan.github.io//7147f546/</id>
+    <published>2019-05-04T23:12:42.000Z</published>
+    <updated>2019-05-05T00:17:32.164Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,14 @@
       
         
         
-          &lt;p&gt;ReadMe&lt;/p&gt;
-
+          &lt;p&gt;iOS增量代码覆盖率可以用来评估开发的自测质量，以及多轮测试后的测试质量。这里会解析iOS代码覆盖率的收集，上报，合并这些环节当中涉及到的技术点。&lt;/p&gt;
+&lt;h3 id=&quot;GCDAProfiling&quot;&gt;&lt;a href=&quot;#GCDAProfiling&quot;
         
       
     
     </summary>
     
-      <category term="其他" scheme="https://goguhuan.github.io/categories/cat-else/"/>
+      <category term="代码覆盖率" scheme="https://goguhuan.github.io/categories/%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/"/>
     
     
       <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
