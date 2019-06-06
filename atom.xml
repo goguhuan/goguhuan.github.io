@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://goguhuan.github.io/"/>
-  <updated>2019-05-06T01:40:29.602Z</updated>
+  <updated>2019-06-06T12:08:58.412Z</updated>
   <id>https://goguhuan.github.io/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>内存越界</title>
+    <link href="https://goguhuan.github.io//ab4c4d9/"/>
+    <id>https://goguhuan.github.io//ab4c4d9/</id>
+    <published>2019-06-06T10:19:57.000Z</published>
+    <updated>2019-06-06T12:08:58.412Z</updated>
+    
+    <summary type="html">
+    
+      内存越界crash分析
+    
+    </summary>
+    
+      <category term="crash排查" scheme="https://goguhuan.github.io/categories/crash%E6%8E%92%E6%9F%A5/"/>
+    
+    
+      <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OC property多线程读写</title>
+    <link href="https://goguhuan.github.io//a5b9e7f8/"/>
+    <id>https://goguhuan.github.io//a5b9e7f8/</id>
+    <published>2019-06-06T09:19:17.000Z</published>
+    <updated>2019-06-06T12:08:58.411Z</updated>
+    
+    <summary type="html">
+    
+      OC property多线程读写的方式
+    
+    </summary>
+    
+      <category term="crash排查" scheme="https://goguhuan.github.io/categories/crash%E6%8E%92%E6%9F%A5/"/>
+    
+    
+      <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS增量代码覆盖率实现 (上)</title>
     <link href="https://goguhuan.github.io//7147f546/"/>
     <id>https://goguhuan.github.io//7147f546/</id>
     <published>2019-05-04T23:12:42.000Z</published>
-    <updated>2019-05-06T01:40:29.602Z</updated>
+    <updated>2019-06-06T12:08:58.412Z</updated>
     
     <summary type="html">
     
@@ -41,7 +81,7 @@
     <link href="https://goguhuan.github.io//d431311d/"/>
     <id>https://goguhuan.github.io//d431311d/</id>
     <published>2019-05-04T22:30:09.000Z</published>
-    <updated>2019-05-06T01:40:29.603Z</updated>
+    <updated>2019-06-06T12:08:58.413Z</updated>
     
     <summary type="html">
     

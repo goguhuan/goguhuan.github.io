@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="goguhuan,">
+  <meta name="keywords" content="thread safety, oc propety, getter, setter">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="这个博客主要聚焦于iOS，移动开发，计算机领域。">
-<meta name="keywords" content="goguhuan">
+<meta name="description" content="OC property多线程读写的方式">
+<meta name="keywords" content="thread safety, oc propety, getter, setter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网站简介">
-<meta property="og:url" content="https://goguhuan.github.io/d431311d/index.html">
+<meta property="og:title" content="OC property多线程读写">
+<meta property="og:url" content="https://goguhuan.github.io/a5b9e7f8/index.html">
 <meta property="og:site_name" content="goguhuan技术博客">
-<meta property="og:description" content="这个博客主要聚焦于iOS，移动开发，计算机领域。">
+<meta property="og:description" content="OC property多线程读写的方式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T12:08:58.413Z">
+<meta property="og:updated_time" content="2019-06-06T12:08:58.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网站简介">
-<meta name="twitter:description" content="这个博客主要聚焦于iOS，移动开发，计算机领域。">
+<meta name="twitter:title" content="OC property多线程读写">
+<meta name="twitter:description" content="OC property多线程读写的方式">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://goguhuan.github.io/d431311d/">
+  <link rel="canonical" href="https://goguhuan.github.io/a5b9e7f8/">
 
 
 
 
 
-  <title>网站简介 | goguhuan技术博客</title>
+  <title>OC property多线程读写 | goguhuan技术博客</title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/d431311d/">
+    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/a5b9e7f8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="goguhuan">
@@ -291,7 +291,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">网站简介</h2>
+          <h2 class="post-title" itemprop="name headline">OC property多线程读写</h2>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-05T06:30:09+08:00">
-                2019-05-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T17:19:17+08:00">
+                2019-06-06
               </time>
               
                   | 作者: <a href="/tags/goguhuan">goguhuan</a>
@@ -329,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cat-else/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/crash排查/" itemprop="url" rel="index">
+                    <span itemprop="name">crash排查</span>
                   </a>
                 </span>
 
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/d431311d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/d431311d/" itemprop="commentCount"></span>
+                <a href="/a5b9e7f8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/a5b9e7f8/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/d431311d/" class="leancloud_visitors" data-flag-title="网站简介">
+             <span id="/a5b9e7f8/" class="leancloud_visitors" data-flag-title="OC property多线程读写">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,6 +373,10 @@
           
 
           
+              <div class="post-description">
+                  OC property多线程读写的方式
+              </div>
+          
 
         </div>
       </header>
@@ -387,7 +391,44 @@
       
 
       
-        <p>这个博客主要聚焦于iOS，移动开发，计算机领域。</p>
+        <h1 id="crash堆栈"><a href="#crash堆栈" class="headerlink" title="crash堆栈"></a>crash堆栈</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Thread 16 name:  xxx</span><br><span class="line">Thread 16 Crashed:</span><br><span class="line">0   libobjc.A.dylib                 0x00000001846c9704 objc_object::release() (in libobjc.A.dylib) + 8</span><br><span class="line">1   _demo_                       0x00000001008e2c38 -[BSAPMMachoManager getMainModuleFrameCount:] (in _demo_) (BSAPMMachoManager.m:127)</span><br><span class="line">2   _demo_                       0x00000001008ed4c0 -[xxx fire] (in _demo_) (xxx.m:60)</span><br><span class="line">3   _demo_                       0x00000001008e4a1c xxx (in _demo_) (xxx.m:52)</span><br><span class="line">4   CoreFoundation                  0x0000000185c271d8 __CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__ (in CoreFoundation) + 28</span><br><span class="line">5   CoreFoundation                  0x0000000185c26eec __CFRunLoopDoTimer (in CoreFoundation) + 872</span><br><span class="line">6   CoreFoundation                  0x0000000185c267a8 __CFRunLoopDoTimers (in CoreFoundation) + 244</span><br><span class="line">7   CoreFoundation                  0x0000000185c243a4 __CFRunLoopRun (in CoreFoundation) + 1572</span><br><span class="line">8   CoreFoundation                  0x0000000185b522b8 CFRunLoopRunSpecific (in CoreFoundation) + 444</span><br><span class="line">9   CoreFoundation                  0x0000000185b9fb44 CFRunLoopRun (in CoreFoundation) + 112</span><br><span class="line">10  _demo_                       0x00000001008e4b10 -[xxx runThreadLoop] (in _demo_) (xxx.m:100)</span><br><span class="line">11  _demo_                       0x00000001008e48e4 -[xxx threadMain] (in _demo_) (xxx.m:44)</span><br><span class="line">12  Foundation                      0x000000018678ce68 __NSThread__start__ (in Foundation) + 1024</span><br><span class="line">13  libsystem_pthread.dylib         0x0000000184d0d850 _pthread_body (in libsystem_pthread.dylib) + 240</span><br><span class="line">14  libsystem_pthread.dylib         0x0000000184d0d760 _pthread_body (in libsystem_pthread.dylib) + 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x10005c000 -        0x100fcffff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/F1846ED9-B732-42A9-B41F-F9C78B064E6A/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)getMainModuleFrameCount:(NSArray *)frames &#123;</span><br><span class="line">    [self getCurrentModuleInfo];</span><br><span class="line">    NSInteger count = 0;</span><br><span class="line">    if (!_mainModuleInfo) &#123; //此处为 127行</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="定位crash变量"><a href="#定位crash变量" class="headerlink" title="定位crash变量"></a>定位crash变量</h1><p>符号化显示第127行，难道就是这个_mainModuleInfo变量造成的？</p>
+<p>实际上符号化指向的行号是不准确的，一方面oc语言会插入一些retain，release函数导致映射关系不准确，另一方面堆栈显示的是返回地址，并不是进入子函数的位置，因此需要从其他角度进行现场的还原。</p>
+<h2 id="直接调试ipa包"><a href="#直接调试ipa包" class="headerlink" title="直接调试ipa包"></a>直接调试ipa包</h2><p>原理是通过对ipa包进行重签名就可以结合xcode进行调试了，可以使用IPAPatch或者MonkeyDev这类工具进行。</p>
+<h2 id="计算crash发生的地址，设置断点"><a href="#计算crash发生的地址，设置断点" class="headerlink" title="计算crash发生的地址，设置断点"></a>计算crash发生的地址，设置断点</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1   _demo_                       0x00000001008e2c38 -[BSAPMMachoManager getMainModuleFrameCount:] (in _demo_) (BSAPMMachoManager.m:127)</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x10005c000 -        0x100fcffff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/F1846ED9-B732-42A9-B41F-F9C78B064E6A/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
+<ul>
+<li>计算偏移量</li>
+</ul>
+<p>0x00000001008e2c38 - 0x10005c000 = 0x0000000000886c38</p>
+<ul>
+<li>在xcode调试控制台 获取ipa包的 载入地址</li>
+</ul>
+<p>image list <em>demo</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(lldb) image list _demo_</span><br><span class="line">[  0] 71FD4F46-1291-3B2D-A625-F5EB515BCB9D 0x00000001000e0000 /Users/winnchen/Library/Developer/Xcode/DerivedData/BSUITestProject-dnxfwcbufkxrwkeokoqpxlkvnphw/Build/Products/Debug-iphoneos/BSUITestProject.app/_demo_</span><br></pre></td></tr></table></figure>
+<ul>
+<li>计算实际地址，设置断点</li>
+</ul>
+<p>0x00000001000e0000 + 0x0000000000886c38 = 0x0000000100966c38</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">breakpoint set -a 0x0000000100966c38</span><br></pre></td></tr></table></figure>
+<h2 id="分析寄存器与变量之间的对应关系"><a href="#分析寄存器与变量之间的对应关系" class="headerlink" title="分析寄存器与变量之间的对应关系"></a>分析寄存器与变量之间的对应关系</h2><p>进入断点后，进一步的分析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">_demo_`___lldb_unnamed_symbol38887$$_demo_:</span><br><span class="line">    0x100966bdc &lt;+0&gt;:   sub    sp, sp, #0x140            ; =0x140 </span><br><span class="line">    0x100966be0 &lt;+4&gt;:   stp    x28, x27, [sp, #0xe0]</span><br><span class="line">    0x100966be4 &lt;+8&gt;:   stp    x26, x25, [sp, #0xf0]</span><br><span class="line">    0x100966be8 &lt;+12&gt;:  stp    x24, x23, [sp, #0x100]</span><br><span class="line">    0x100966bec &lt;+16&gt;:  stp    x22, x21, [sp, #0x110]</span><br><span class="line">    0x100966bf0 &lt;+20&gt;:  stp    x20, x19, [sp, #0x120]</span><br><span class="line">    0x100966bf4 &lt;+24&gt;:  stp    x29, x30, [sp, #0x130]</span><br><span class="line">    0x100966bf8 &lt;+28&gt;:  add    x29, sp, #0x130           ; =0x130 </span><br><span class="line">    0x100966bfc &lt;+32&gt;:  mov    x20, x0</span><br><span class="line">    0x100966c00 &lt;+36&gt;:  adrp   x8, 1774</span><br><span class="line">    0x100966c04 &lt;+40&gt;:  ldr    x8, [x8, #0xda8]</span><br><span class="line">    0x100966c08 &lt;+44&gt;:  ldr    x8, [x8]</span><br><span class="line">    0x100966c0c &lt;+48&gt;:  stur   x8, [x29, #-0x58]</span><br><span class="line">    0x100966c10 &lt;+52&gt;:  mov    x0, x2</span><br><span class="line">    0x100966c14 &lt;+56&gt;:  bl     0x100dad620               ; symbol stub for: objc_retain</span><br><span class="line">    0x100966c18 &lt;+60&gt;:  mov    x19, x0</span><br><span class="line">    0x100966c1c &lt;+64&gt;:  adrp   x8, 2510</span><br><span class="line">    0x100966c20 &lt;+68&gt;:  ldr    x1, [x8, #0x6e8]</span><br><span class="line">    0x100966c24 &lt;+72&gt;:  mov    x0, x20</span><br><span class="line">    0x100966c28 &lt;+76&gt;:  bl     0x100dad5e4               ; symbol stub for: objc_msgSend</span><br><span class="line">    0x100966c2c &lt;+80&gt;:  mov    x29, x29</span><br><span class="line">    0x100966c30 &lt;+84&gt;:  bl     0x100dad644               ; symbol stub for: objc_retainAutoreleasedReturnValue</span><br><span class="line">    0x100966c34 &lt;+88&gt;:  bl     0x100dad608               ; symbol stub for: objc_release</span><br><span class="line">-&gt;  0x100966c38 &lt;+92&gt;:  adrp   x8, 2536</span><br><span class="line">    0x100966c3c &lt;+96&gt;:  ldrsw  x8, [x8, #0x60]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>沿着函数参数进行数据流向分析</li>
+</ul>
+<p>0x100966c38是函数返回地址，并不是函数进入的地址，实际上，是在0x100966c34当中执行了objc_release的方法，而objc_release接受了一个野指针所以也就造成了crash。</p>
+<p>因此要分析0x100966c34传入的参数，第1个参数对应寄存器x0，第2个参数对应x1，以此类推。此外，x0同时也作为函数的返回值。</p>
+<p>0x100966c30执行了objc_retainAutoreleasedReturnValue，也就是x0是来自于这个临时变量的。</p>
+<p>大致的伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)getMainModuleFrameCount:(NSArray *)frames &#123;</span><br><span class="line">  objc_retain(frames);  #对应0x100966c14</span><br><span class="line">  x0 = objc_msgSend(self, &quot;getCurrentModuleInfo&quot;); #对应0x100966c28</span><br><span class="line">  x0 = objc_retainAutoreleasedReturnValue(x0); #对应0x100966c30</span><br><span class="line">  objc_release(x0);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过这里的分析，实际上导致crash的变量并不是_mainModuleInfo，而是[self getCurrentModuleInfo]返回的临时变量。</p>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>定位到crash变量之后进行进一步的分析，为什么这个返回的临时变量会发生crash，首先确认一下是否是多线程操作造成了这种情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSDictionary *)getCurrentModuleInfo &#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">      xxx</span><br><span class="line">    &#125;);</span><br><span class="line">    return _moduleInfo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看起来此处逻辑简单，有一个只执行一次的block，然后就是返回一个实例变量。</p>
+<p>继续查看代码确认是有另外一个线程对_moduleInfo进行赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateModuleInfo &#123;</span><br><span class="line">    NSDictionary *moduleInfo = xxx;</span><br><span class="line">    _moduleInfo = moduleInfo;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在多线程直接对实例变量进行读写是会造成crash的，需要进行保护，oc语法上提供了这种属性读写的语法糖，@property (atomic)</p>
+<p>编译器会自动生成属性读写多线程安全的代码，通过@property 以及 self.xxx的方式就能避免上面的crash，当然这种自动生成的多线程安全代码也是比较简陋的，具体生成怎样的代码这里就不展开诉述了。</p>
 
       
     </div>
@@ -409,7 +450,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://goguhuan.github.io/d431311d/" title="网站简介">https://goguhuan.github.io/d431311d/</a>
+    <a href="https://goguhuan.github.io/a5b9e7f8/" title="OC property多线程读写">https://goguhuan.github.io/a5b9e7f8/</a>
     
   </li>
   <li class="post-copyright-license">
@@ -450,14 +491,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/7147f546/" rel="next" title="iOS增量代码覆盖率实现 (上)">
+                <i class="fa fa-chevron-left"></i> iOS增量代码覆盖率实现 (上)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/7147f546/" rel="prev" title="iOS增量代码覆盖率实现 (上)">
-                iOS增量代码覆盖率实现 (上) <i class="fa fa-chevron-right"></i>
+              <a href="/ab4c4d9/" rel="prev" title="内存越界">
+                内存越界 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -513,8 +558,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -591,6 +645,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crash堆栈"><span class="nav-number">1.</span> <span class="nav-text">crash堆栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定位crash变量"><span class="nav-number">3.</span> <span class="nav-text">定位crash变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接调试ipa包"><span class="nav-number">3.1.</span> <span class="nav-text">直接调试ipa包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算crash发生的地址，设置断点"><span class="nav-number">3.2.</span> <span class="nav-text">计算crash发生的地址，设置断点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析寄存器与变量之间的对应关系"><span class="nav-number">3.3.</span> <span class="nav-text">分析寄存器与变量之间的对应关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题分析"><span class="nav-number">4.</span> <span class="nav-text">问题分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
