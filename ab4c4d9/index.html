@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="goguhuan技术博客">
 <meta property="og:description" content="内存越界crash分析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T12:08:58.412Z">
+<meta property="og:updated_time" content="2019-10-08T05:24:58.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存越界">
 <meta name="twitter:description" content="内存越界crash分析">
@@ -421,6 +421,7 @@
 <p>将x8, x9, x4, x5的数据从crash报告当中读取出来</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x4: 0x000000016fab4000（safeStart）     x5: 0x000000016fbb0000（safeEnd）</span><br><span class="line">x8: 0x00000001703dc580（dst）     x9: 0x000000016fbaffff（src）</span><br></pre></td></tr></table></figure>
 <p>此处问题就明显了，虽然src依然位于 safeStart 和 safeEnd之间，但是由于 safeEnd - src = 1，也就是说只有1个字节是可读的，因此这里读取的时候就越过了safeEnd，产生了越界。</p>
+<p>界。</p>
 
       
     </div>
@@ -492,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/923d076f/" rel="prev" title="dyld 多线程越界">
+                dyld 多线程越界 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -571,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
