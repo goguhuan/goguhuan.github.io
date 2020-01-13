@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="goguhuan技术博客">
 <meta property="og:description" content="dyld 多线程越界分析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-08T05:24:58.212Z">
+<meta property="og:updated_time" content="2020-01-13T10:32:02.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dyld 多线程越界">
 <meta name="twitter:description" content="dyld 多线程越界分析">
@@ -417,7 +417,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Thread 32 crashed with ARM-64 Thread State:</span><br><span class="line">  cpsr: 0x0000000060000000     fp: 0x00000001720126e0     lr: 0x0000000101a43f2c     pc: 0x0000000101a43854 </span><br><span class="line">    sp: 0x00000001720125a0     x0: 0x000000010462bf28     x1: 0x0000000103852073    x10: 0x0000000283224200 </span><br><span class="line">   x11: 0x000f000283224200    x12: 0x0000000283224230    x13: 0x000000010462bf50    x14: 0x7feffffffffffffe </span><br><span class="line">   x15: 0x7000000000000000    x16: 0x000000010462bf50    x17: 0x0000000101a4381c    x18: 0x0000000000000000 </span><br><span class="line">   x19: 0x0000000283745880     x2: 0x0000000000000000 (const mach_header_t *)header    x20: 0x0000000000000000    x21: 0x0000000000000000 </span><br><span class="line">   x22: 0x0000000000000219    x23: 0x0000000000000218 (for loop : count)    x24: 0x00000001038520cf    x25: 0x00000001ed3e40fe </span><br><span class="line">   x26: 0x0000000000000000    x27: 0x00000001ed3dbec1    x28: 0x00000001045a5000    x29: 0x00000001720126e0 </span><br><span class="line">    x3: 0x0000000000000000 (const char *)path    x4: 0x0000000000000000 (long)targetSlide    x5: 0x0000000000000000 (BOOL)validate    x6: 0x0000000000000000 </span><br><span class="line">    x7: 0x0000000000000000     x8: 0x169c41e5cecf004f     x9: 0x0000000103852073</span><br></pre></td></tr></table></figure>
 <p>几个重要的参数 x2, x26, x3 均为 0x0, 说明从 dyld_xxx 返回的数据有问题，而 x24 保留有 loop count，说明这个值是异常的</p>
 <p>经过测试，给 dyld_xxx 使用一个特别大的值越界之后返回的正是 0x0, 说明 image 在动态增加的时候这个接口是不安全的，有可能导致在另外一个线程当中读取出来 0x0的数据，就会造成 crash，这里由于没有办法同步知道这些 image 的加载变更，所以需要判断 header, path 等参数是否为 null 进行简单校验。</p>
-<p>�验。</p>
 
       
     </div>
@@ -489,6 +488,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/3a67dad2/" rel="prev" title="Flutter 页面打开速度优化">
+                Flutter 页面打开速度优化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -568,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -579,7 +582,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -660,7 +663,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

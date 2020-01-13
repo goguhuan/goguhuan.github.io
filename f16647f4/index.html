@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="memory out of bounds">
+  <meta name="keywords" content="iOS 动态库懒加载">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="内存越界crash分析">
-<meta name="keywords" content="memory out of bounds">
+<meta name="description" content="iOS 动态库懒加载">
+<meta name="keywords" content="iOS 动态库懒加载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存越界">
-<meta property="og:url" content="https://goguhuan.github.io/ab4c4d9/index.html">
+<meta property="og:title" content="iOS 动态库懒加载">
+<meta property="og:url" content="https://goguhuan.github.io/f16647f4/index.html">
 <meta property="og:site_name" content="goguhuan技术博客">
-<meta property="og:description" content="内存越界crash分析">
+<meta property="og:description" content="iOS 动态库懒加载">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-01-13T10:32:02.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存越界">
-<meta name="twitter:description" content="内存越界crash分析">
+<meta name="twitter:title" content="iOS 动态库懒加载">
+<meta name="twitter:description" content="iOS 动态库懒加载">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://goguhuan.github.io/ab4c4d9/">
+  <link rel="canonical" href="https://goguhuan.github.io/f16647f4/">
 
 
 
 
 
-  <title>内存越界 | goguhuan技术博客</title>
+  <title>iOS 动态库懒加载 | goguhuan技术博客</title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/ab4c4d9/">
+    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/f16647f4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="goguhuan">
@@ -291,7 +291,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">内存越界</h2>
+          <h2 class="post-title" itemprop="name headline">iOS 动态库懒加载</h2>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T18:19:57+08:00">
-                2019-06-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T16:25:51+08:00">
+                2020-01-13
               </time>
               
                   | 作者: <a href="/tags/goguhuan">goguhuan</a>
@@ -329,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/crash排查/" itemprop="url" rel="index">
-                    <span itemprop="name">crash排查</span>
+                  <a href="/categories/iOS基础/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS基础</span>
                   </a>
                 </span>
 
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/ab4c4d9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/ab4c4d9/" itemprop="commentCount"></span>
+                <a href="/f16647f4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/f16647f4/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/ab4c4d9/" class="leancloud_visitors" data-flag-title="内存越界">
+             <span id="/f16647f4/" class="leancloud_visitors" data-flag-title="iOS 动态库懒加载">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +374,7 @@
 
           
               <div class="post-description">
-                  内存越界crash分析
+                  iOS 动态库懒加载
               </div>
           
 
@@ -391,36 +391,43 @@
       
 
       
-        <h1 id="crash堆栈"><a href="#crash堆栈" class="headerlink" title="crash堆栈"></a>crash堆栈</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Thread 10 name:  xxx</span><br><span class="line">Thread 10 Crashed:</span><br><span class="line">0   _demo_                       0x0000000100ae249c _mach_copyMem (in _demo_) (BacktraceLogger.m:516)</span><br><span class="line">1   _demo_                       0x0000000100ae17e8 xxx</span><br><span class="line">2   _demo_                       0x0000000100ae166c xxx</span><br><span class="line">3   _demo_                       0x0000000100ae1ca4 xxx</span><br><span class="line">4   _demo_                       0x0000000100ae1488 xxx</span><br><span class="line">5   _demo_                       0x0000000100ad8a1c xxx</span><br><span class="line">6   CoreFoundation                  0x00000001ac852718 __CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__ (in CoreFoundation) + 28</span><br><span class="line">7   CoreFoundation                  0x00000001ac852448 __CFRunLoopDoTimer (in CoreFoundation) + 864</span><br><span class="line">8   CoreFoundation                  0x00000001ac851c7c __CFRunLoopDoTimers (in CoreFoundation) + 248</span><br><span class="line">9   CoreFoundation                  0x00000001ac84cb58 __CFRunLoopRun (in CoreFoundation) + 1880</span><br><span class="line">10  CoreFoundation                  0x00000001ac84c0e0 CFRunLoopRunSpecific (in CoreFoundation) + 436</span><br><span class="line">11  CoreFoundation                  0x00000001ac84ce7c CFRunLoopRun (in CoreFoundation) + 80</span><br><span class="line">12  _demo_                       0x0000000100ad8b10 xxx</span><br><span class="line">13  _demo_                       0x0000000100ad88e4 xxx</span><br><span class="line">14  Foundation                      0x00000001ad37523c __NSThread__start__ (in Foundation) + 1040</span><br><span class="line">15  libsystem_pthread.dylib         0x00000001ac4dc25c _pthread_body (in libsystem_pthread.dylib) + 128</span><br><span class="line">16  libsystem_pthread.dylib         0x00000001ac4dc1bc _pthread_start (in libsystem_pthread.dylib) + 48</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x100250000 -        0x1011c3fff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/6BBDF1E8-CCFA-4FDC-B9BA-98C02A179BC3/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
-<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kern_return_t mach_copyMem(const void *const src, void *const dst, const size_t numBytes, int useSafeRange, vm_address_t safeStart, vm_address_t safeEnd) &#123;</span><br><span class="line">    if (useSafeRange &amp;&amp; numBytes == sizeof(void *) * 2) &#123;</span><br><span class="line">        vm_address_t srcAddr = (vm_address_t)src;</span><br><span class="line">        if (srcAddr &gt; 0x10</span><br><span class="line">            &amp;&amp; srcAddr &gt;= safeStart</span><br><span class="line">            &amp;&amp; srcAddr &lt; safeEnd) &#123;</span><br><span class="line">            memcpy(dst, src, numBytes);</span><br><span class="line">            return KERN_SUCCESS;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vm_size_t bytesCopied = 0;</span><br><span class="line">    return vm_read_overwrite(mach_task_self(), (vm_address_t)src, (vm_size_t)numBytes, (vm_address_t)dst, &amp;bytesCopied);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="crash现场还原"><a href="#crash现场还原" class="headerlink" title="crash现场还原"></a>crash现场还原</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0   _demo_                       0x0000000100ae249c _mach_copyMem (in _demo_) (BacktraceLogger.m:516)</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x100250000 -        0x1011c3fff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/6BBDF1E8-CCFA-4FDC-B9BA-98C02A179BC3/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
+        <h2 id="iOS-动态库懒加载"><a href="#iOS-动态库懒加载" class="headerlink" title="iOS 动态库懒加载"></a>iOS 动态库懒加载</h2><p>引入 动态库 之后会增加 app 的启动耗时，我们希望将一些不影响主页面显示的动态库进行懒加载，从而减少动态库引入的带来的启动耗时负面影响。此外，我们也希望动态库懒加载方案能够做到对上层透明，也就是说上层代码调用动态库的接口是保持不变的，这样才能无痛迁移，下面是我们调研动态库懒加载方案当中遇到的问题和最终的解决方案。</p>
+<h3 id="原理简介"><a href="#原理简介" class="headerlink" title="原理简介"></a>原理简介</h3><p>为了保证动态库能够进行懒加载，需要将动态库依赖进行完全移除，然后在运行时的时候重新加载动态库，并且修正所有的动态库接口依赖。</p>
+<h3 id="动态库-oc-class-处理"><a href="#动态库-oc-class-处理" class="headerlink" title="动态库 oc class 处理"></a>动态库 oc class 处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//这个类来自于 动态库</span><br><span class="line">@interface A_From_DynamicFramework : NSObject</span><br><span class="line"></span><br><span class="line">+ (void)foo;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 <ul>
-<li>计算偏移量</li>
+<li>业务层调用 例子</li>
 </ul>
-<p>0x0000000100ae249c - 0x100250000 = 0x000000000089249c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">	[A_From_DynamicFramework foo]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当动态库移除之后，此处就会编译失败，报错找不到 A_From_DynamicFramework 这个 class，那么如何调整呢？我们可以利用 oc runtime 的特性处理这种问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">	[NSClassFromString(@&quot;A_From_DynamicFramework&quot;) foo];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>在xcode调试控制台 获取ipa包的 载入地址</li>
+<li>懒加载对业务 透明</li>
 </ul>
-<p>image list <em>demo</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(lldb) image list _demo_</span><br><span class="line">[  0] 71FD4F46-1291-3B2D-A625-F5EB515BCB9D 0x00000001000e0000 /Users/winnchen/Library/Developer/Xcode/DerivedData/BSUITestProject-dnxfwcbufkxrwkeokoqpxlkvnphw/Build/Products/Debug-iphoneos/BSUITestProject.app/_demo_</span><br></pre></td></tr></table></figure>
+<p>通过 宏 进行重定向，将接口调用转发到一个中间类当中，这样可以做到业务代码不需要变动，只需要定义一些宏进行替换即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#define A_From_DynamicFramework A_From_DynamicFramework_forwarder</span><br><span class="line">- (void)test &#123;</span><br><span class="line">	[A_From_DynamicFramework foo];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>中间类将会截获所有的方法，转发到动态库的类当中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@implementation A_From_DynamicFramework_forwarder</span><br><span class="line"></span><br><span class="line">+ (void)forwardInvocation:(NSInvocation *)invocation &#123;</span><br><span class="line">	//转发到动态库类当中</span><br><span class="line">	[invocation invokeWithTarget:NSClassFromString(@&quot;A_From_DynamicFramework&quot;)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="宏-中间类"><a href="#宏-中间类" class="headerlink" title="宏 + 中间类"></a>宏 + 中间类</h4><p>至此，看起来这个 宏 + 中间类 方案比较简单易行，很快就把所有编译问题解决了，而运行起来的时候，却发现调用动态库一些方法的时候发生了 crash，下面会详细介绍说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//这个类来自于 上层业务，继承了 动态库当中的类</span><br><span class="line">@interface B_From_MainBundle : A_From_DynamicFramework</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) uint64_t a;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>按照上面的 宏 + 中间类 的方案，实际上 B_From_MainBundle 继承的是 中间类 A_From_DynamicFramework_forwarder，这就导致其实 B_From_MainBundle 的实例变量的大小以及位置 跟 直接继承 A_From_DynamicFramework 是有差异的（假设 A_From_DynamicFramework_forwarder 的大小是 100 字节，A_From_DynamicFramework 的大小是 200 字节，那么继承 A_From_DynamicFramework_forwarder 的 子类 B_From_MainBundle 大小应该是 100 + 8 = 108 字节，而继承 A_From_DynamicFramework 的子类 B_From_MainBundle 大小应该是 200 + 8 = 208 字节）。</p>
+<p>也就是说 宏 + 中间类 的方案具有一个重大缺陷： <strong>继承的子类结构是错误的</strong>。</p>
+<h4 id="继承链修正"><a href="#继承链修正" class="headerlink" title="继承链修正"></a>继承链修正</h4><p>其实 oc runtime 在设计的时候已经支持了调整 class 内部实例变量的支持（包括 内存偏移位置，实例大小等等），所以当系统库的 class 升级的时候，app 不需要重新编译也能继续运行在新系统上，也同时可以动态的去给一个 class 增添变量。所以，我们期望能够直接修正整个继承链，那么都不需要通过中间类进行方法查找，也能正确的执行 oc 方法了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">未修正前：</span><br><span class="line">B_From_MainBundle -&gt; A_From_DynamicFramework_forwarder</span><br><span class="line"></span><br><span class="line">修正后：</span><br><span class="line">B_From_MainBundle -&gt; A_From_DynamicFramework_forwarder -&gt; A_From_DynamicFramework</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//oc 运行时 修正 子类 变量结构的核心代码</span><br><span class="line">static void reconcileInstanceVariables(Class cls, Class supercls, const class_ro_t*&amp; ro) &#123;</span><br><span class="line">    if (ro-&gt;instanceStart &gt;= super_ro-&gt;instanceSize) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //这里实际是通过判断 父类的大小是否变更 来进行 内存布局的修正</span><br><span class="line">    if (ro-&gt;instanceStart &lt; super_ro-&gt;instanceSize) &#123;</span><br><span class="line">        class_ro_t *ro_w = make_ro_writeable(rw);</span><br><span class="line">        ro = rw-&gt;ro;</span><br><span class="line">        </span><br><span class="line">        //修正 内存布局</span><br><span class="line">        moveIvars(ro_w, super_ro-&gt;instanceSize);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述修正内存布局的代码只会在 realizeClass 当中进行调用，而这个是在加载二进制 image 的时候就会触发，所以如果要在运行时重新修正继承链，目前是通过直接操作 class 的结构去触发一次 realizeClass 调用，比较 trick。</p>
+<p>伪代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Class cls = [A_From_DynamicFramework_forwarder class];</span><br><span class="line">Class superclass = NSClassFromString(@&quot;A_From_DynamicFramework&quot;);</span><br><span class="line"></span><br><span class="line">//重设 父类 </span><br><span class="line">class_setSuperclass(cls, superclass);</span><br><span class="line"></span><br><span class="line">//清除 realized 标志位，使其能触发 realizeClass</span><br><span class="line">cls-&gt;rw-&gt;flags = ~RW_REALIZED;</span><br><span class="line"></span><br><span class="line">//NSClassFromString 调用 look_up_class 会触发 realizeClass</span><br><span class="line">NSClassFromString(clsName);</span><br></pre></td></tr></table></figure>
+<h3 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h3><h4 id="宏-中间类-继承链修正"><a href="#宏-中间类-继承链修正" class="headerlink" title="宏 + 中间类 + 继承链修正"></a>宏 + 中间类 + 继承链修正</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#define A_From_DynamicFramework A_From_DynamicFramework_forwarder</span><br><span class="line">- (void)test &#123;</span><br><span class="line">	//通过 宏 进行中间类截获</span><br><span class="line">	[A_From_DynamicFramework foo];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@implementation A_From_DynamicFramework_forwarder</span><br><span class="line"></span><br><span class="line">+ (void)forwardInvocation:(NSInvocation *)invocation &#123;</span><br><span class="line">	//中间类 截获方法，并且进行 继承链修正</span><br><span class="line">	[A_From_DynamicFramework_forwarder tryChangeClass:self];</span><br><span class="line"></span><br><span class="line">	//修正完继承链之后，重新进行一次方法转发，此后不需要通过方法转发进行调用，因为继承链修正后方法已经能查找到，所以这个方法只会调用一次</span><br><span class="line">	[invocation invokeWithTarget:[self superclass]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h3 id="拓展方案"><a href="#拓展方案" class="headerlink" title="拓展方案"></a>拓展方案</h3><p>其实除了上述这种 宏 + 中间类 + 继承链修正 的方案之外，经验证还有另外一种可行方案 – 通过模拟 dyld symbol binding 的过程进行符号的修正。</p>
 <ul>
-<li>计算实际地址，设置断点</li>
+<li>dyld symbol binding</li>
 </ul>
-<p>0x00000001000e0000 + 0x000000000089249c = 0x000000010097249c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">breakpoint set -a 0x000000010097249c</span><br></pre></td></tr></table></figure>
-<h2 id="分析寄存器与变量之间的对应关系"><a href="#分析寄存器与变量之间的对应关系" class="headerlink" title="分析寄存器与变量之间的对应关系"></a>分析寄存器与变量之间的对应关系</h2><p>进入断点后，进行进一步的分析。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">_demo_`___lldb_unnamed_symbol39215$$_demo_:</span><br><span class="line">    0x10097246c &lt;+0&gt;:   mov    x8, x1</span><br><span class="line">    0x100972470 &lt;+4&gt;:   mov    x9, x0</span><br><span class="line">    0x100972474 &lt;+8&gt;:   cmp    x2, #0x10                 ; =0x10 </span><br><span class="line">    0x100972478 &lt;+12&gt;:  b.ne   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x10097247c &lt;+16&gt;:  cbz    w3, 0x1009724a8           ; &lt;+60&gt;</span><br><span class="line">    0x100972480 &lt;+20&gt;:  cmp    x9, #0x11                 ; =0x11 </span><br><span class="line">    0x100972484 &lt;+24&gt;:  b.lo   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972488 &lt;+28&gt;:  cmp    x9, x4</span><br><span class="line">    0x10097248c &lt;+32&gt;:  b.lo   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972490 &lt;+36&gt;:  cmp    x9, x5</span><br><span class="line">    0x100972494 &lt;+40&gt;:  b.hs   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972498 &lt;+44&gt;:  mov    w0, #0x0</span><br><span class="line">-&gt;  0x10097249c &lt;+48&gt;:  ldr    q0, [x9]</span><br><span class="line">    0x1009724a0 &lt;+52&gt;:  str    q0, [x8]</span><br><span class="line">    0x1009724a4 &lt;+56&gt;:  ret</span><br></pre></td></tr></table></figure>
-<p>此处ldr，str指令是memcpy优化生成的指令，用于这种size对齐的内存读写。</p>
-<p>对应代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memcpy(dst, src, numBytes);</span><br></pre></td></tr></table></figure>
-<p>沿着数据流向分析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x9，来自x0，而x0对应 第1个参数src;</span><br><span class="line">x8，来自x1，对应 第2个参数dst；</span><br></pre></td></tr></table></figure></p>
-<p>此处从src处读取发生crash，说明dst是一个不可读的地址。</p>
-<p>接着分析进入这个代码分支的变量值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (srcAddr &gt; 0x10</span><br><span class="line">    &amp;&amp; srcAddr &gt;= safeStart</span><br><span class="line">    &amp;&amp; srcAddr &lt; safeEnd) &#123;</span><br></pre></td></tr></table></figure>
-<p>可以看到safeStart和safeEnd是比较重要的两个值，在执行到0x10097249c的时候这些值对应x4，x5</p>
-<p>将x8, x9, x4, x5的数据从crash报告当中读取出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x4: 0x000000016fab4000（safeStart）     x5: 0x000000016fbb0000（safeEnd）</span><br><span class="line">x8: 0x00000001703dc580（dst）     x9: 0x000000016fbaffff（src）</span><br></pre></td></tr></table></figure>
-<p>此处问题就明显了，虽然src依然位于 safeStart 和 safeEnd之间，但是由于 safeEnd - src = 1，也就是说只有1个字节是可读的，因此这里读取的时候就越过了safeEnd，产生了越界。</p>
+<p>二进制 image 当中包含 dyld load 的段信息，我们可以解析这一部分的信息，获知到 哪些 symbol 需要 binding，并且知道这些 symbol 的具体地址。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果工程当中 使用了动态库的 A_From_DynamicFramework 这个类，那么将会在 dyld load 段当中插入信息表明要求 dyld 载入的时候去查找相关的 symbol，比如查找 A_From_DynamicFramework 类的位置：</span><br><span class="line">_OBJC_CLASS_$_A_From_DynamicFramework</span><br></pre></td></tr></table></figure>
+<p>所以，我们可以在运行时的时候重新读取 dyld load 的信息，在载入动态库之后重新进行一次 symbol binding 操作即可，由于这套方案实现更加复杂，此处暂不展开讨论，关键技术 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1，</span><br><span class="line">dyld load 段信息读取</span><br><span class="line"></span><br><span class="line">2，</span><br><span class="line">__objc_classrefs 段修正</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
 
       
     </div>
@@ -442,7 +449,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://goguhuan.github.io/ab4c4d9/" title="内存越界">https://goguhuan.github.io/ab4c4d9/</a>
+    <a href="https://goguhuan.github.io/f16647f4/" title="iOS 动态库懒加载">https://goguhuan.github.io/f16647f4/</a>
     
   </li>
   <li class="post-copyright-license">
@@ -483,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/a5b9e7f8/" rel="next" title="OC property多线程读写">
-                <i class="fa fa-chevron-left"></i> OC property多线程读写
+              <a href="/3a67dad2/" rel="next" title="Flutter 页面打开速度优化">
+                <i class="fa fa-chevron-left"></i> Flutter 页面打开速度优化
               </a>
             
           </div>
@@ -492,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/923d076f/" rel="prev" title="dyld 多线程越界">
-                dyld 多线程越界 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -647,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crash堆栈"><span class="nav-number">1.</span> <span class="nav-text">crash堆栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crash现场还原"><span class="nav-number">3.</span> <span class="nav-text">crash现场还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析寄存器与变量之间的对应关系"><span class="nav-number">3.1.</span> <span class="nav-text">分析寄存器与变量之间的对应关系</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-动态库懒加载"><span class="nav-number">1.</span> <span class="nav-text">iOS 动态库懒加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理简介"><span class="nav-number">1.1.</span> <span class="nav-text">原理简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态库-oc-class-处理"><span class="nav-number">1.2.</span> <span class="nav-text">动态库 oc class 处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宏-中间类"><span class="nav-number">1.2.1.</span> <span class="nav-text">宏 + 中间类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承链修正"><span class="nav-number">1.2.2.</span> <span class="nav-text">继承链修正</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终方案"><span class="nav-number">1.3.</span> <span class="nav-text">最终方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宏-中间类-继承链修正"><span class="nav-number">1.3.1.</span> <span class="nav-text">宏 + 中间类 + 继承链修正</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展方案"><span class="nav-number">1.4.</span> <span class="nav-text">拓展方案</span></a></li></ol></li></ol></div>
             
 
           </div>

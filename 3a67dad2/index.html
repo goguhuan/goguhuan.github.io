@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="memory out of bounds">
+  <meta name="keywords" content="Flutter 页面打开速度优化">
 
 
 
@@ -81,18 +81,21 @@
 
 
 
-<meta name="description" content="内存越界crash分析">
-<meta name="keywords" content="memory out of bounds">
+<meta name="description" content="Flutter 页面打开速度优化">
+<meta name="keywords" content="Flutter 页面打开速度优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存越界">
-<meta property="og:url" content="https://goguhuan.github.io/ab4c4d9/index.html">
+<meta property="og:title" content="Flutter 页面打开速度优化">
+<meta property="og:url" content="https://goguhuan.github.io/3a67dad2/index.html">
 <meta property="og:site_name" content="goguhuan技术博客">
-<meta property="og:description" content="内存越界crash分析">
+<meta property="og:description" content="Flutter 页面打开速度优化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-13T10:32:02.437Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/goguhuan/goguhuan.resources/master/static/image/flutter_open_page_optimize/index/trace_ios.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/goguhuan/goguhuan.resources/master/static/image/flutter_open_page_optimize/index/flutter_page_open.png">
+<meta property="og:updated_time" content="2020-01-13T10:32:02.436Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存越界">
-<meta name="twitter:description" content="内存越界crash分析">
+<meta name="twitter:title" content="Flutter 页面打开速度优化">
+<meta name="twitter:description" content="Flutter 页面打开速度优化">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/goguhuan/goguhuan.resources/master/static/image/flutter_open_page_optimize/index/trace_ios.png">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://goguhuan.github.io/ab4c4d9/">
+  <link rel="canonical" href="https://goguhuan.github.io/3a67dad2/">
 
 
 
 
 
-  <title>内存越界 | goguhuan技术博客</title>
+  <title>Flutter 页面打开速度优化 | goguhuan技术博客</title>
   
 
 
@@ -274,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/ab4c4d9/">
+    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/3a67dad2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="goguhuan">
@@ -291,7 +294,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">内存越界</h2>
+          <h2 class="post-title" itemprop="name headline">Flutter 页面打开速度优化</h2>
         
 
         <div class="post-meta">
@@ -303,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T18:19:57+08:00">
-                2019-06-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-24T19:46:21+08:00">
+                2019-12-24
               </time>
               
                   | 作者: <a href="/tags/goguhuan">goguhuan</a>
@@ -329,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/crash排查/" itemprop="url" rel="index">
-                    <span itemprop="name">crash排查</span>
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
                   </a>
                 </span>
 
@@ -347,8 +350,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/ab4c4d9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/ab4c4d9/" itemprop="commentCount"></span>
+                <a href="/3a67dad2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/3a67dad2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +359,7 @@
 
           
           
-             <span id="/ab4c4d9/" class="leancloud_visitors" data-flag-title="内存越界">
+             <span id="/3a67dad2/" class="leancloud_visitors" data-flag-title="Flutter 页面打开速度优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +377,7 @@
 
           
               <div class="post-description">
-                  内存越界crash分析
+                  Flutter 页面打开速度优化
               </div>
           
 
@@ -391,36 +394,91 @@
       
 
       
-        <h1 id="crash堆栈"><a href="#crash堆栈" class="headerlink" title="crash堆栈"></a>crash堆栈</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Thread 10 name:  xxx</span><br><span class="line">Thread 10 Crashed:</span><br><span class="line">0   _demo_                       0x0000000100ae249c _mach_copyMem (in _demo_) (BacktraceLogger.m:516)</span><br><span class="line">1   _demo_                       0x0000000100ae17e8 xxx</span><br><span class="line">2   _demo_                       0x0000000100ae166c xxx</span><br><span class="line">3   _demo_                       0x0000000100ae1ca4 xxx</span><br><span class="line">4   _demo_                       0x0000000100ae1488 xxx</span><br><span class="line">5   _demo_                       0x0000000100ad8a1c xxx</span><br><span class="line">6   CoreFoundation                  0x00000001ac852718 __CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__ (in CoreFoundation) + 28</span><br><span class="line">7   CoreFoundation                  0x00000001ac852448 __CFRunLoopDoTimer (in CoreFoundation) + 864</span><br><span class="line">8   CoreFoundation                  0x00000001ac851c7c __CFRunLoopDoTimers (in CoreFoundation) + 248</span><br><span class="line">9   CoreFoundation                  0x00000001ac84cb58 __CFRunLoopRun (in CoreFoundation) + 1880</span><br><span class="line">10  CoreFoundation                  0x00000001ac84c0e0 CFRunLoopRunSpecific (in CoreFoundation) + 436</span><br><span class="line">11  CoreFoundation                  0x00000001ac84ce7c CFRunLoopRun (in CoreFoundation) + 80</span><br><span class="line">12  _demo_                       0x0000000100ad8b10 xxx</span><br><span class="line">13  _demo_                       0x0000000100ad88e4 xxx</span><br><span class="line">14  Foundation                      0x00000001ad37523c __NSThread__start__ (in Foundation) + 1040</span><br><span class="line">15  libsystem_pthread.dylib         0x00000001ac4dc25c _pthread_body (in libsystem_pthread.dylib) + 128</span><br><span class="line">16  libsystem_pthread.dylib         0x00000001ac4dc1bc _pthread_start (in libsystem_pthread.dylib) + 48</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x100250000 -        0x1011c3fff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/6BBDF1E8-CCFA-4FDC-B9BA-98C02A179BC3/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
-<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kern_return_t mach_copyMem(const void *const src, void *const dst, const size_t numBytes, int useSafeRange, vm_address_t safeStart, vm_address_t safeEnd) &#123;</span><br><span class="line">    if (useSafeRange &amp;&amp; numBytes == sizeof(void *) * 2) &#123;</span><br><span class="line">        vm_address_t srcAddr = (vm_address_t)src;</span><br><span class="line">        if (srcAddr &gt; 0x10</span><br><span class="line">            &amp;&amp; srcAddr &gt;= safeStart</span><br><span class="line">            &amp;&amp; srcAddr &lt; safeEnd) &#123;</span><br><span class="line">            memcpy(dst, src, numBytes);</span><br><span class="line">            return KERN_SUCCESS;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vm_size_t bytesCopied = 0;</span><br><span class="line">    return vm_read_overwrite(mach_task_self(), (vm_address_t)src, (vm_size_t)numBytes, (vm_address_t)dst, &amp;bytesCopied);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="crash现场还原"><a href="#crash现场还原" class="headerlink" title="crash现场还原"></a>crash现场还原</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0   _demo_                       0x0000000100ae249c _mach_copyMem (in _demo_) (BacktraceLogger.m:516)</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x100250000 -        0x1011c3fff +_demo_ arm64  &lt;71fd4f4612913b2da625f5eb515bcb9d&gt; /var/containers/Bundle/Application/6BBDF1E8-CCFA-4FDC-B9BA-98C02A179BC3/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
-<ul>
-<li>计算偏移量</li>
+        <h2 id="Flutter-Engine-调优系列-一-–-Flutter-页面打开速度优化"><a href="#Flutter-Engine-调优系列-一-–-Flutter-页面打开速度优化" class="headerlink" title="Flutter Engine 调优系列 (一) – Flutter 页面打开速度优化"></a>Flutter Engine 调优系列 (一) – Flutter 页面打开速度优化</h2><p>在给 flutter engine 进行调优定制过程当中，我们针对 flutter 进行了一系列的改良，也拓展了一些原有的基础建设（包括 <strong>flutter apm 体系</strong>， <strong>flutter monkey 测试</strong> 等），这篇文章将会介绍一下 <strong>flutter 页面打开速度优化</strong> 的调研过程和方案，并且由此开发的 <strong>线上 trace系统</strong> 也希望能给后续类似需求提供一些经验和方向。</p>
+<h3 id="打开速度埋点"><a href="#打开速度埋点" class="headerlink" title="打开速度埋点"></a>打开速度埋点</h3><ul>
+<li>起始时间</li>
 </ul>
-<p>0x0000000100ae249c - 0x100250000 = 0x000000000089249c</p>
+<p>点击 flutter 页面的入口按钮</p>
 <ul>
-<li>在xcode调试控制台 获取ipa包的 载入地址</li>
+<li>结束时间</li>
 </ul>
-<p>image list <em>demo</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(lldb) image list _demo_</span><br><span class="line">[  0] 71FD4F46-1291-3B2D-A625-F5EB515BCB9D 0x00000001000e0000 /Users/winnchen/Library/Developer/Xcode/DerivedData/BSUITestProject-dnxfwcbufkxrwkeokoqpxlkvnphw/Build/Products/Debug-iphoneos/BSUITestProject.app/_demo_</span><br></pre></td></tr></table></figure>
+<p>gpu 第一帧渲染完成</p>
+<p>未优化之前的线上数据</p>
+<table>
+<thead>
+<tr>
+<th>机型</th>
+<th>90 分位耗时 (毫秒)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone 6 Plus</td>
+<td>2510</td>
+</tr>
+</tbody>
+</table>
+<p>线上数据非常出乎意料，iPhone 6 Plus 的表现竟然如此糟糕，90 分位耗时达到 2510 毫秒，这个指标需要得到改善，针对这个问题我们开始展开调研。</p>
+<h3 id="线下调研"><a href="#线下调研" class="headerlink" title="线下调研"></a>线下调研</h3><p>我们找来一台 iPhone 6 Plus 设备，手动测试过程当中观察了一下埋点数据，发现数据并没有 2510 毫秒那么差，线下测试 100 - 500 毫秒的数据都有出现过，我们接着再细分了一些线上数据的分布，得到结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>机型</th>
+<th>0 -&gt; 500 毫秒</th>
+<th>500 -&gt; 1000 毫秒</th>
+<th>1000 -&gt; 2000 毫秒</th>
+<th>&gt; 2000 毫秒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone 6 Plus</td>
+<td>48.9 %</td>
+<td>15.1 %</td>
+<td>15.3 %</td>
+<td>20.7 %</td>
+</tr>
+</tbody>
+</table>
+<p>看来只凭开发在本地测试有可能找不到线上用户真正发生的瓶颈，我们需要一种手段去了解线上用户在打开 flutter 页面过程当中耗时瓶颈是什么。</p>
+<h3 id="线上策略"><a href="#线上策略" class="headerlink" title="线上策略"></a>线上策略</h3><p>我们希望能够精准的定位耗时瓶颈，所以需要实现一套类似于 xcode instruments time profiler 的功能，但是 xcode instruments time profiler 还不是很直观，其实 android 的 trace view 功能是我们想要的功能，能够直观的分析整个运行过程的调用时序，以及耗时过长的函数，所以 trace view 也常常用于卡顿，启动分析等场景，为此，我们开发了 ios 版的 线上 trace 功能。</p>
+<p>最终的 trace view 效果如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/goguhuan/goguhuan.resources/master/static/image/flutter_open_page_optimize/index/trace_ios.png" alt="trace_ios" title="trace_ios"></p>
+<h4 id="ios-trace-实现原理"><a href="#ios-trace-实现原理" class="headerlink" title="ios trace 实现原理"></a>ios trace 实现原理</h4><ul>
+<li>客户端堆栈聚合上报</li>
+</ul>
+<p>当 trace 功能开启的时候会激活采样线程，采样线程以 100 毫秒的频率去捕获所有的线程堆栈，trace 功能关闭的时候会将之前的堆栈进行聚合上报，采样聚合过程如下：</p>
+<p>第一次采样的调用链</p>
+<p>A -&gt; B -&gt; C</p>
+<p>第二次采样的调用链</p>
+<p>A -&gt; B -&gt; D</p>
+<p>合并后的调用链</p>
+<p>A (2) -&gt; B (2) -&gt; C(1), D(1)</p>
+<p>有了整个调用链的层级、以及频率信息之后，则可以生成 trace view 树进行展示。</p>
 <ul>
-<li>计算实际地址，设置断点</li>
+<li>服务器聚类 &amp;&amp; 生成 trace view 树</li>
 </ul>
-<p>0x00000001000e0000 + 0x000000000089249c = 0x000000010097249c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">breakpoint set -a 0x000000010097249c</span><br></pre></td></tr></table></figure>
-<h2 id="分析寄存器与变量之间的对应关系"><a href="#分析寄存器与变量之间的对应关系" class="headerlink" title="分析寄存器与变量之间的对应关系"></a>分析寄存器与变量之间的对应关系</h2><p>进入断点后，进行进一步的分析。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">_demo_`___lldb_unnamed_symbol39215$$_demo_:</span><br><span class="line">    0x10097246c &lt;+0&gt;:   mov    x8, x1</span><br><span class="line">    0x100972470 &lt;+4&gt;:   mov    x9, x0</span><br><span class="line">    0x100972474 &lt;+8&gt;:   cmp    x2, #0x10                 ; =0x10 </span><br><span class="line">    0x100972478 &lt;+12&gt;:  b.ne   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x10097247c &lt;+16&gt;:  cbz    w3, 0x1009724a8           ; &lt;+60&gt;</span><br><span class="line">    0x100972480 &lt;+20&gt;:  cmp    x9, #0x11                 ; =0x11 </span><br><span class="line">    0x100972484 &lt;+24&gt;:  b.lo   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972488 &lt;+28&gt;:  cmp    x9, x4</span><br><span class="line">    0x10097248c &lt;+32&gt;:  b.lo   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972490 &lt;+36&gt;:  cmp    x9, x5</span><br><span class="line">    0x100972494 &lt;+40&gt;:  b.hs   0x1009724a8               ; &lt;+60&gt;</span><br><span class="line">    0x100972498 &lt;+44&gt;:  mov    w0, #0x0</span><br><span class="line">-&gt;  0x10097249c &lt;+48&gt;:  ldr    q0, [x9]</span><br><span class="line">    0x1009724a0 &lt;+52&gt;:  str    q0, [x8]</span><br><span class="line">    0x1009724a4 &lt;+56&gt;:  ret</span><br></pre></td></tr></table></figure>
-<p>此处ldr，str指令是memcpy优化生成的指令，用于这种size对齐的内存读写。</p>
-<p>对应代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memcpy(dst, src, numBytes);</span><br></pre></td></tr></table></figure>
-<p>沿着数据流向分析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x9，来自x0，而x0对应 第1个参数src;</span><br><span class="line">x8，来自x1，对应 第2个参数dst；</span><br></pre></td></tr></table></figure></p>
-<p>此处从src处读取发生crash，说明dst是一个不可读的地址。</p>
-<p>接着分析进入这个代码分支的变量值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (srcAddr &gt; 0x10</span><br><span class="line">    &amp;&amp; srcAddr &gt;= safeStart</span><br><span class="line">    &amp;&amp; srcAddr &lt; safeEnd) &#123;</span><br></pre></td></tr></table></figure>
-<p>可以看到safeStart和safeEnd是比较重要的两个值，在执行到0x10097249c的时候这些值对应x4，x5</p>
-<p>将x8, x9, x4, x5的数据从crash报告当中读取出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x4: 0x000000016fab4000（safeStart）     x5: 0x000000016fbb0000（safeEnd）</span><br><span class="line">x8: 0x00000001703dc580（dst）     x9: 0x000000016fbaffff（src）</span><br></pre></td></tr></table></figure>
-<p>此处问题就明显了，虽然src依然位于 safeStart 和 safeEnd之间，但是由于 safeEnd - src = 1，也就是说只有1个字节是可读的，因此这里读取的时候就越过了safeEnd，产生了越界。</p>
+<p>根据客户端上报的调用链信息，从中提取频率 &gt; 50% 的栈顶函数作为聚类信息，这样可以将类似的调用链聚合在一起。</p>
+<p>比如: A (2) -&gt; B (2) -&gt; C(1), D(1) 这个调用链就可以提取 B (2) 作为聚类信息。</p>
+<h3 id="分析线上-trace-view"><a href="#分析线上-trace-view" class="headerlink" title="分析线上 trace view"></a>分析线上 trace view</h3><p>我们针对 点击 flutter 页面入口按钮 到 gpu 第一帧渲染完成 这一过程开启了 trace 的功能，并且对这一过程 &gt; 2000 毫秒的数据进行上报，经过服务器聚类之后，大部分 trace view 瓶颈如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/goguhuan/goguhuan.resources/master/static/image/flutter_open_page_optimize/index/flutter_page_open.png" alt="flutter_page_open" title="flutter_page_open"></p>
+<p>进入 flutter 页面的时候会进行 engine 的创建，flutter::shell::create 会等待 flutter ui 线程将 dart vm 以及 dart isolate 创建完成，而瓶颈点是在创建 dart isolate 这一过程当中，flutter::DartIsolate::CreateRootIsolate 的执行耗时高达 1300 毫秒，这一步的发现为后续提供优化方案 <strong>提供了非常重要的方向和线索</strong> 。</p>
+<p>dart isolate 的创建涉及到大量的 io 操作，即使是同一款机型，在不同的运行状态下也会有不同的表现，所以线上的数据会有呈现出一种分布，在线下测试过程当中也不容易复现，我们决定将 <strong>dart isolate 放在异步线程当中进行预加载</strong>，这种方案不需要初始化 engine 的其他部分，比如：opengl相关的视图缓存，内存占用会更少，并且可以进行异步化避免卡顿 (官方 engine 本身是只能在主线程进行初始化的)。</p>
+<h3 id="优化方案效果"><a href="#优化方案效果" class="headerlink" title="优化方案效果"></a>优化方案效果</h3><table>
+<thead>
+<tr>
+<th>机型</th>
+<th>90 分位耗时 (毫秒)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone 6 Plus</td>
+<td>1169</td>
+</tr>
+</tbody>
+</table>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>这套 trace 系统能够方便的获取线上 app 的运行状态，给优化工作提供了具有极大意义的参考，在线下自动化测试我们也提供了更高精度，更强大的 trace 功能，用于启动耗时分析，页面打开分析，以及 逆向系统库和第三方应用 等多个领域，希望能给大家带来这方面的参考。</p>
 
       
     </div>
@@ -442,7 +500,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://goguhuan.github.io/ab4c4d9/" title="内存越界">https://goguhuan.github.io/ab4c4d9/</a>
+    <a href="https://goguhuan.github.io/3a67dad2/" title="Flutter 页面打开速度优化">https://goguhuan.github.io/3a67dad2/</a>
     
   </li>
   <li class="post-copyright-license">
@@ -483,8 +541,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/a5b9e7f8/" rel="next" title="OC property多线程读写">
-                <i class="fa fa-chevron-left"></i> OC property多线程读写
+              <a href="/923d076f/" rel="next" title="dyld 多线程越界">
+                <i class="fa fa-chevron-left"></i> dyld 多线程越界
               </a>
             
           </div>
@@ -493,8 +551,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/923d076f/" rel="prev" title="dyld 多线程越界">
-                dyld 多线程越界 <i class="fa fa-chevron-right"></i>
+              <a href="/f16647f4/" rel="prev" title="iOS 动态库懒加载">
+                iOS 动态库懒加载 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -647,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crash堆栈"><span class="nav-number">1.</span> <span class="nav-text">crash堆栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crash现场还原"><span class="nav-number">3.</span> <span class="nav-text">crash现场还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析寄存器与变量之间的对应关系"><span class="nav-number">3.1.</span> <span class="nav-text">分析寄存器与变量之间的对应关系</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter-Engine-调优系列-一-–-Flutter-页面打开速度优化"><span class="nav-number">1.</span> <span class="nav-text">Flutter Engine 调优系列 (一) – Flutter 页面打开速度优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开速度埋点"><span class="nav-number">1.1.</span> <span class="nav-text">打开速度埋点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线下调研"><span class="nav-number">1.2.</span> <span class="nav-text">线下调研</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上策略"><span class="nav-number">1.3.</span> <span class="nav-text">线上策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ios-trace-实现原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">ios trace 实现原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析线上-trace-view"><span class="nav-number">1.4.</span> <span class="nav-text">分析线上 trace view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化方案效果"><span class="nav-number">1.5.</span> <span class="nav-text">优化方案效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">1.6.</span> <span class="nav-text">更多</span></a></li></ol></li></ol></div>
             
 
           </div>
