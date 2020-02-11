@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="dyld 多线程 越界">
+  <meta name="keywords" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="dyld 多线程越界分析">
-<meta name="keywords" content="dyld 多线程 越界">
+<meta name="description" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
+<meta name="keywords" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dyld 多线程越界">
-<meta property="og:url" content="https://goguhuan.github.io/923d076f/index.html">
+<meta property="og:title" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
+<meta property="og:url" content="https://goguhuan.github.io/557b2d1f/index.html">
 <meta property="og:site_name" content="goguhuan技术博客">
-<meta property="og:description" content="dyld 多线程越界分析">
+<meta property="og:description" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-11T02:51:51.009Z">
+<meta property="og:updated_time" content="2020-02-11T02:51:51.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyld 多线程越界">
-<meta name="twitter:description" content="dyld 多线程越界分析">
+<meta name="twitter:title" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
+<meta name="twitter:description" content="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://goguhuan.github.io/923d076f/">
+  <link rel="canonical" href="https://goguhuan.github.io/557b2d1f/">
 
 
 
 
 
-  <title>dyld 多线程越界 | goguhuan技术博客</title>
+  <title>dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析 | goguhuan技术博客</title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/923d076f/">
+    <link itemprop="mainEntityOfPage" href="https://goguhuan.github.io/557b2d1f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="goguhuan">
@@ -291,7 +291,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">dyld 多线程越界</h2>
+          <h2 class="post-title" itemprop="name headline">dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析</h2>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T12:10:15+08:00">
-                2019-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T10:16:31+08:00">
+                2020-02-11
               </time>
               
                   | 作者: <a href="/tags/goguhuan">goguhuan</a>
@@ -347,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/923d076f/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/923d076f/" itemprop="commentCount"></span>
+                <a href="/557b2d1f/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/557b2d1f/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,7 +356,7 @@
 
           
           
-             <span id="/923d076f/" class="leancloud_visitors" data-flag-title="dyld 多线程越界">
+             <span id="/557b2d1f/" class="leancloud_visitors" data-flag-title="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +374,7 @@
 
           
               <div class="post-description">
-                  dyld 多线程越界分析
+                  dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析
               </div>
           
 
@@ -391,32 +391,31 @@
       
 
       
-        <h1 id="crash堆栈"><a href="#crash堆栈" class="headerlink" title="crash堆栈"></a>crash堆栈</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Thread 32 Crashed:</span><br><span class="line">0   _demo_                        0x0000000101a43854 0x1006ac000 + 20543572 +[xxx getImageInfo:path:targetSlide:validate:]</span><br><span class="line">1   _demo_                        0x0000000101a43f2c 0x1006ac000 + 20545324</span><br><span class="line">2   _demo_                        0x0000000101a43f2c 0x1006ac000 + 20545324</span><br><span class="line">3   _demo_                        0x0000000101a35594 0x1006ac000 + 20485524</span><br><span class="line">4   _demo_                        0x0000000101a35528 0x1006ac000 + 20485416</span><br><span class="line">5   libdispatch.dylib               0x00000001b75e7610 0x1b758c000 + 374288</span><br><span class="line">6   libdispatch.dylib               0x00000001b75e8184 0x1b758c000 + 377220</span><br><span class="line">7   libdispatch.dylib               0x00000001b7594464 0x1b758c000 + 33892</span><br><span class="line">8   libdispatch.dylib               0x00000001b7594e58 0x1b758c000 + 36440</span><br><span class="line">9   libdispatch.dylib               0x00000001b759e340 0x1b758c000 + 74560</span><br><span class="line">10  libsystem_pthread.dylib         0x00000001b7637fa4 0x1b762c000 + 49060</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x1006ac000 -        0x103d33fff +_demo_ arm64  &lt;c7c1a8cc055a37478b7a1b96e5d6fd4f&gt; /private/var/containers/Bundle/Application/E7B81670-67AC-4AD9-9F1B-16A841E459BD/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
-<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+ (NSDictionary *)getImageInfo:(const mach_header_t *)header path:(const char *)path targetSlide:(long)targetSlide validate:(BOOL)validate &#123;</span><br><span class="line">    const char* name = path;</span><br><span class="line">    const char* tmp = strrchr(name, &apos;/&apos;);</span><br><span class="line">    if (tmp) &#123;</span><br><span class="line">        name = tmp + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    segImageInfo imageData =  &#123;0&#125;;</span><br><span class="line">    segImageInfo *image = &amp;imageData;</span><br><span class="line">    image-&gt;cputype = header-&gt;cputype;</span><br><span class="line">    image-&gt;cpusubtype = header-&gt;cpusubtype;</span><br><span class="line">    long offset = (long)header + sizeof(mach_header_t);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="crash现场还原"><a href="#crash现场还原" class="headerlink" title="crash现场还原"></a>crash现场还原</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0   _demo_                        0x0000000101a43854 0x1006ac000 + 20543572 +[xxx getImageInfo:path:targetSlide:validate:]</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x1006ac000 -        0x103d33fff +_demo_ arm64  &lt;c7c1a8cc055a37478b7a1b96e5d6fd4f&gt; /private/var/containers/Bundle/Application/E7B81670-67AC-4AD9-9F1B-16A841E459BD/_demo_.app/_demo_</span><br></pre></td></tr></table></figure>
+        <h1 id="crash堆栈"><a href="#crash堆栈" class="headerlink" title="crash堆栈"></a>crash堆栈</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Thread 31 name:  dart:io EventHandler</span><br><span class="line">Thread 31 Crashed:</span><br><span class="line">0   Flutter                         0x000000010628adb0 dart::bin::EventHandlerImplementation::EventHandlerEntry (in Flutter) (eventhandler_macos.cc:375)</span><br><span class="line">1   Flutter                         0x000000010628ac1c dart::bin::EventHandlerImplementation::EventHandlerEntry (in Flutter) (eventhandler.h:91)</span><br></pre></td></tr></table></figure>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void EventHandlerImplementation::EventHandlerEntry(uword args) &#123;</span><br><span class="line">  struct kevent events[kMaxEvents];</span><br><span class="line">  ...</span><br><span class="line">      handler_impl-&gt;HandleEvents(events, result);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void EventHandlerImplementation::HandleEvents(struct kevent* events, int size) &#123;</span><br><span class="line">  ...</span><br><span class="line">  for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">    // If flag EV_ERROR is set it indicates an error in kevent processing.</span><br><span class="line">    if ((events[i].flags &amp; EV_ERROR) != 0) &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">   &#125;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="crash现场还原"><a href="#crash现场还原" class="headerlink" title="crash现场还原"></a>crash现场还原</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0   Flutter                         0x000000010628adb0 dart::bin::EventHandlerImplementation::EventHandlerEntry (in Flutter) (eventhandler_macos.cc:375)</span><br><span class="line"></span><br><span class="line">Binary Images:</span><br><span class="line">       0x105f8c000 -        0x106533fff  Flutter arm64  &lt;2e96fdadaf353b41b4ba6a8e63f06301&gt; /private/var/containers/Bundle/Application/37D0CE9B-9F43-4034-ADF4-1B3C10A53419/LIKE.app/Frameworks/Flutter.framework/Flutter</span><br></pre></td></tr></table></figure>
 <ul>
 <li>计算偏移量</li>
 </ul>
-<p>0x0000000101a43854 - 0x1006ac000 = 20543572</p>
+<p>0x000000010628adb0 - 0x105f8c000 = 3141040</p>
 <ul>
-<li>在xcode调试控制台 获取ipa包的 载入地址</li>
+<li>在xcode调试控制台 获取Flutter库的 载入地址</li>
 </ul>
-<p>image list <em>demo</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(lldb) image list _demo_</span><br><span class="line">[  0] C7C1A8CC-055A-3747-8B7A-1B96E5D6FD4F 0x00000001000e0000 /Users/winnchen/Library/Developer/Xcode/DerivedData/BSUITestProject-adqfyjzmhqfposhenyppejsiglud/Build/Products/Debug-iphoneos/BSUITestProject.app/_demo_</span><br></pre></td></tr></table></figure>
+<p>image list Flutter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(lldb) image list Flutter</span><br><span class="line">[  0] C7C1A8CC-055A-3747-8B7A-1B96E5D6FD4F 0x00000001000e0000 /Users/winnchen/Library/Developer/Xcode/DerivedData/BSUITestProject-adqfyjzmhqfposhenyppejsiglud/Build/Products/Debug-iphoneos/BSUITestProject.app/Flutter.framework/Flutter</span><br></pre></td></tr></table></figure>
 <ul>
 <li>计算实际地址，设置断点</li>
 </ul>
-<p>0x00000001000e0000 + 20543572 = 0x0000000101477854</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">breakpoint set -a 0x0000000101477854</span><br></pre></td></tr></table></figure>
+<p>0x00000001000e0000 + 3141040 = 0x1003dedb0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">breakpoint set -a 0x1003dedb0</span><br></pre></td></tr></table></figure>
 <h2 id="分析寄存器与变量之间的对应关系"><a href="#分析寄存器与变量之间的对应关系" class="headerlink" title="分析寄存器与变量之间的对应关系"></a>分析寄存器与变量之间的对应关系</h2><p>进入断点后，进行进一步的分析。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">_demo_`+[xxx getImageInfo:path:targetSlide:validate:]:</span><br><span class="line">    0x10147781c &lt;+0&gt;:    sub    sp, sp, #0x150            ; =0x150 </span><br><span class="line">    0x101477820 &lt;+4&gt;:    stp    x28, x27, [sp, #0xf0]</span><br><span class="line">    0x101477824 &lt;+8&gt;:    stp    x26, x25, [sp, #0x100]</span><br><span class="line">    0x101477828 &lt;+12&gt;:   stp    x24, x23, [sp, #0x110]</span><br><span class="line">    0x10147782c &lt;+16&gt;:   stp    x22, x21, [sp, #0x120]</span><br><span class="line">    0x101477830 &lt;+20&gt;:   stp    x20, x19, [sp, #0x130]</span><br><span class="line">    0x101477834 &lt;+24&gt;:   stp    x29, x30, [sp, #0x140]</span><br><span class="line">    0x101477838 &lt;+28&gt;:   add    x29, sp, #0x140           ; =0x140 </span><br><span class="line">    0x10147783c &lt;+32&gt;:   str    x4, [sp, #0x30]</span><br><span class="line">    0x101477840 &lt;+36&gt;:   mov    x26, x2</span><br><span class="line">    0x101477844 &lt;+40&gt;:   adrp   x8, 8947</span><br><span class="line">    0x101477848 &lt;+44&gt;:   ldr    x8, [x8, #0xcb0]</span><br><span class="line">    0x10147784c &lt;+48&gt;:   ldr    x8, [x8]</span><br><span class="line">    0x101477850 &lt;+52&gt;:   stur   x8, [x29, #-0x58]</span><br><span class="line">-&gt;  0x101477854 &lt;+56&gt;:   ldp    w8, w9, [x26, #0x4]</span><br><span class="line">    0x101477858 &lt;+60&gt;:   ldr    w19, [x26, #0x10]</span><br><span class="line">    0x10147785c &lt;+64&gt;:   str    x3, [sp, #0x20]</span><br></pre></td></tr></table></figure>
-<p>此处，正在读取 x26 + 0x4 的值，对应代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image-&gt;cputype = header-&gt;cputype;</span><br></pre></td></tr></table></figure>
-<p>沿着数据流向分析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x26 来自 x2,</span><br><span class="line">x2 为第1个参数 header;</span><br><span class="line">x3 为第2个参数 path;</span><br><span class="line">x23 来自 循环遍历 _dyld_get_image_header(int i) 的计数器 i</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">loc_2fed24:</span><br><span class="line">    r20 = 0x0;</span><br><span class="line">    r25 = 0x0;</span><br><span class="line">    asm &#123; sxtw       x26, w21 &#125;;</span><br><span class="line">    r27 = stack[56];</span><br><span class="line">    goto loc_2fedb0;</span><br><span class="line"></span><br><span class="line">loc_2fedb0:</span><br><span class="line">#define EV_ERROR            0x4000      /* error, data contains errno */</span><br><span class="line">    if ((*(int8_t *)(r27 + 0xffffffffffffffff) &amp; 0x40) != 0x0) goto loc_2ff80c;</span><br><span class="line"></span><br><span class="line">loc_2feef0:</span><br><span class="line">    r20 = r20 + 0x1;</span><br><span class="line">    r27 = r27 + 0x20;</span><br><span class="line">    if (r20 &lt; r26) goto loc_2fedb0;</span><br></pre></td></tr></table></figure>
 <p>从 crash 报告的保留 register 来看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Thread 32 crashed with ARM-64 Thread State:</span><br><span class="line">  cpsr: 0x0000000060000000     fp: 0x00000001720126e0     lr: 0x0000000101a43f2c     pc: 0x0000000101a43854 </span><br><span class="line">    sp: 0x00000001720125a0     x0: 0x000000010462bf28     x1: 0x0000000103852073    x10: 0x0000000283224200 </span><br><span class="line">   x11: 0x000f000283224200    x12: 0x0000000283224230    x13: 0x000000010462bf50    x14: 0x7feffffffffffffe </span><br><span class="line">   x15: 0x7000000000000000    x16: 0x000000010462bf50    x17: 0x0000000101a4381c    x18: 0x0000000000000000 </span><br><span class="line">   x19: 0x0000000283745880     x2: 0x0000000000000000 (const mach_header_t *)header    x20: 0x0000000000000000    x21: 0x0000000000000000 </span><br><span class="line">   x22: 0x0000000000000219    x23: 0x0000000000000218 (for loop : count)    x24: 0x00000001038520cf    x25: 0x00000001ed3e40fe </span><br><span class="line">   x26: 0x0000000000000000    x27: 0x00000001ed3dbec1    x28: 0x00000001045a5000    x29: 0x00000001720126e0 </span><br><span class="line">    x3: 0x0000000000000000 (const char *)path    x4: 0x0000000000000000 (long)targetSlide    x5: 0x0000000000000000 (BOOL)validate    x6: 0x0000000000000000 </span><br><span class="line">    x7: 0x0000000000000000     x8: 0x169c41e5cecf004f     x9: 0x0000000103852073</span><br></pre></td></tr></table></figure>
-<p>几个重要的参数 x2, x26, x3 均为 0x0, 说明从 dyld_xxx 返回的数据有问题，而 x24 保留有 loop count，说明这个值是异常的</p>
-<p>经过测试，给 dyld_xxx 使用一个特别大的值越界之后返回的正是 0x0, 说明 image 在动态增加的时候这个接口是不安全的，有可能导致在另外一个线程当中读取出来 0x0的数据，就会造成 crash，这里由于没有办法同步知道这些 image 的加载变更，所以需要判断 header, path 等参数是否为 null 进行简单校验。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Thread 31 crashed with ARM-64 Thread State:</span><br><span class="line">  cpsr: 0x0000000060000000     fp: 0x0000000170e72ed0     lr: 0x000000010628ac1c     pc: 0x000000010628adb0 </span><br><span class="line">    sp: 0x0000000170e727d0     x0: 0x0000000000000000     x1: 0x0000000000000000    x10: 0x000000000000014c </span><br><span class="line">   x11: 0x00000001b0efad4c    x12: 0x00000001b0efad4c    x13: 0x000000000000007e    x14: 0x0000000000000001 </span><br><span class="line">   x15: 0x0000000000000881    x16: 0x0000000000000149    x17: 0x0000000000000000    x18: 0x0000000000000000 </span><br><span class="line">   x19: 0x000000017066f600     x2: 0x0000000000000000    x20: 0x0000000000000000    x21: 0x0000000000000001 </span><br><span class="line">   x22: 0x0000000000000000    x23: 0x0000000000001837    x24: 0x0000000000000000    x25: 0x0000000000000000 </span><br><span class="line">   x26: 0x0000000000000001    x27: 0x0000000000000000    x28: 0x000000017066f634    x29: 0x0000000170e72ed0 </span><br><span class="line">    x3: 0x0000000170e72860     x4: 0x0000000000000010     x5: 0x0000000000000000     x6: 0x0000000000000000 </span><br><span class="line">    x7: 0x0000000000000000     x8: 0x0000000000000000     x9: 0x00000001ae9323a0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//大小为 0x20</span><br><span class="line">struct kevent &#123;</span><br><span class="line">  uintptr_t       ident;  /* identifier for this event */</span><br><span class="line">  int16_t         filter; /* filter for event */</span><br><span class="line">  uint16_t        flags;  /* general flags */</span><br><span class="line">  uint32_t        fflags; /* filter-specific flags */</span><br><span class="line">  intptr_t        data;   /* filter-specific data */</span><br><span class="line">  void            *udata; /* opaque user data identifier */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>r20 为循环变量 i 的值，此时为 0；r26为参数size的值，此时为 1；而r27则是代表 events + i的地址，从汇编也能看出来 r27 每次递增 0x20 ，正好是 struct kevent 的值，此时r27的值为 0。</p>
+<p>也就是说传入的events参数为 NULL，而此处没有判空处理导致的崩溃。</p>
+<h2 id="events-参数为-NULL"><a href="#events-参数为-NULL" class="headerlink" title="events 参数为 NULL"></a>events 参数为 NULL</h2><p>由代码当中可以看出，传入 HandleEvents 的第一个参数是栈上的地址，不可能为空，此处是某种原因导致的栈上的数据被破坏，导致读出来的数据为 NULL 造成崩溃</p>
 
       
     </div>
@@ -438,7 +437,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://goguhuan.github.io/923d076f/" title="dyld 多线程越界">https://goguhuan.github.io/923d076f/</a>
+    <a href="https://goguhuan.github.io/557b2d1f/" title="dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析">https://goguhuan.github.io/557b2d1f/</a>
     
   </li>
   <li class="post-copyright-license">
@@ -479,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ab4c4d9/" rel="next" title="内存越界">
-                <i class="fa fa-chevron-left"></i> 内存越界
+              <a href="/804fdf43/" rel="next" title="二进制库瘦身 以及 Flutter 裁剪">
+                <i class="fa fa-chevron-left"></i> 二进制库瘦身 以及 Flutter 裁剪
               </a>
             
           </div>
@@ -488,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/3a67dad2/" rel="prev" title="Flutter 页面打开速度优化">
-                Flutter 页面打开速度优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -643,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crash堆栈"><span class="nav-number">1.</span> <span class="nav-text">crash堆栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crash现场还原"><span class="nav-number">3.</span> <span class="nav-text">crash现场还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析寄存器与变量之间的对应关系"><span class="nav-number">3.1.</span> <span class="nav-text">分析寄存器与变量之间的对应关系</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crash堆栈"><span class="nav-number">1.</span> <span class="nav-text">crash堆栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crash现场还原"><span class="nav-number">3.</span> <span class="nav-text">crash现场还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析寄存器与变量之间的对应关系"><span class="nav-number">3.1.</span> <span class="nav-text">分析寄存器与变量之间的对应关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#events-参数为-NULL"><span class="nav-number">3.2.</span> <span class="nav-text">events 参数为 NULL</span></a></li></ol></li></ol></div>
             
 
           </div>

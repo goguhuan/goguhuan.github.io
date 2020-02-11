@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://goguhuan.github.io/"/>
-  <updated>2020-01-15T08:52:58.525Z</updated>
+  <updated>2020-02-11T02:51:51.010Z</updated>
   <id>https://goguhuan.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析</title>
+    <link href="https://goguhuan.github.io//557b2d1f/"/>
+    <id>https://goguhuan.github.io//557b2d1f/</id>
+    <published>2020-02-11T02:16:31.000Z</published>
+    <updated>2020-02-11T02:51:51.010Z</updated>
+    
+    <summary type="html">
+    
+      dart::bin::EventHandlerImplementation::EventHandlerEntry 崩溃分析
+    
+    </summary>
+    
+      <category term="crash排查" scheme="https://goguhuan.github.io/categories/crash%E6%8E%92%E6%9F%A5/"/>
+    
+    
+      <category term="goguhuan" scheme="https://goguhuan.github.io/tags/goguhuan/"/>
+    
+  </entry>
+  
+  <entry>
     <title>二进制库瘦身 以及 Flutter 裁剪</title>
     <link href="https://goguhuan.github.io//804fdf43/"/>
     <id>https://goguhuan.github.io//804fdf43/</id>
     <published>2020-01-15T07:53:13.000Z</published>
-    <updated>2020-01-15T08:52:58.525Z</updated>
+    <updated>2020-02-11T02:51:51.006Z</updated>
     
     <summary type="html">
     
@@ -41,7 +61,7 @@
     <link href="https://goguhuan.github.io//f16647f4/"/>
     <id>https://goguhuan.github.io//f16647f4/</id>
     <published>2020-01-13T08:25:51.000Z</published>
-    <updated>2020-01-15T08:52:58.526Z</updated>
+    <updated>2020-02-11T02:51:51.011Z</updated>
     
     <summary type="html">
     
@@ -61,7 +81,7 @@
     <link href="https://goguhuan.github.io//3a67dad2/"/>
     <id>https://goguhuan.github.io//3a67dad2/</id>
     <published>2019-12-24T11:46:21.000Z</published>
-    <updated>2020-01-15T08:52:58.525Z</updated>
+    <updated>2020-02-11T02:51:51.006Z</updated>
     
     <summary type="html">
     
@@ -81,7 +101,7 @@
     <link href="https://goguhuan.github.io//923d076f/"/>
     <id>https://goguhuan.github.io//923d076f/</id>
     <published>2019-10-08T04:10:15.000Z</published>
-    <updated>2020-01-15T08:52:58.527Z</updated>
+    <updated>2020-02-11T02:51:51.009Z</updated>
     
     <summary type="html">
     
@@ -101,7 +121,7 @@
     <link href="https://goguhuan.github.io//ab4c4d9/"/>
     <id>https://goguhuan.github.io//ab4c4d9/</id>
     <published>2019-06-06T10:19:57.000Z</published>
-    <updated>2020-01-15T08:52:58.527Z</updated>
+    <updated>2020-02-11T02:51:51.008Z</updated>
     
     <summary type="html">
     
@@ -121,7 +141,7 @@
     <link href="https://goguhuan.github.io//a5b9e7f8/"/>
     <id>https://goguhuan.github.io//a5b9e7f8/</id>
     <published>2019-06-06T09:19:17.000Z</published>
-    <updated>2020-01-15T08:52:58.526Z</updated>
+    <updated>2020-02-11T02:51:51.007Z</updated>
     
     <summary type="html">
     
@@ -141,7 +161,7 @@
     <link href="https://goguhuan.github.io//7147f546/"/>
     <id>https://goguhuan.github.io//7147f546/</id>
     <published>2019-05-04T23:12:42.000Z</published>
-    <updated>2020-01-15T08:52:58.528Z</updated>
+    <updated>2020-02-11T02:51:51.011Z</updated>
     
     <summary type="html">
     
@@ -161,7 +181,7 @@
     <link href="https://goguhuan.github.io//d431311d/"/>
     <id>https://goguhuan.github.io//d431311d/</id>
     <published>2019-05-04T22:30:09.000Z</published>
-    <updated>2020-01-15T08:52:58.527Z</updated>
+    <updated>2020-02-11T02:51:51.012Z</updated>
     
     <summary type="html">
     
